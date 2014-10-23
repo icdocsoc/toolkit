@@ -38,3 +38,12 @@ class TeachDB:
 
     def get_all_students_from_year(self, year):
         return self.fetch_from_teachdb('Student', year=year)
+
+    def get_student_year(self, firstname, lastname):
+        res = []
+        students = self.fetch_from_teachdb('Student',
+                                           firstname=firstname,
+                                           lastname=lastname)
+        for s in students:
+            res.append(s.get('year'))
+        return res
